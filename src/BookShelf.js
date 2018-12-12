@@ -1,5 +1,6 @@
 import React from 'react';
 import Book from './Book';
+import { Link } from 'react-router-dom';
 
 const BookShelf = props => (
   <div>
@@ -7,9 +8,12 @@ const BookShelf = props => (
       <h2 className="bookshelf-title">{props.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          {props.books.map((book) => <Book key={book.id} {...book} />)}
+          {props.books.map((book) => <Book key={book.id} {...book} onChange={props.onChange} />)}
         </ol>
       </div>
+    </div>
+    <div className="open-search">
+      <Link to="/search">Add Book</Link>
     </div>
   </div>
 );
