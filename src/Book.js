@@ -23,6 +23,7 @@ const Book = (props) => {
               <option value="CURRENT">Currently Reading</option>
               <option value="WANT">Want to Read</option>
               <option value="READ">Read</option>
+              <option value="NONE">none</option>
             </select>
           </div>
         </div>

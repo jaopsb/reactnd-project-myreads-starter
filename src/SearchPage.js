@@ -20,12 +20,12 @@ class SearchPage extends React.Component {
             this.setState({ books: [] });
           }
         })
-        .catch(error => console.log(error));
     } else {
       this.setState({ books: [] });
     }
   }
   render() {
+    console.log(this.state.books);
     return (
       <div className="search-books">
         <div className="search-books-bar">

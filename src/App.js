@@ -1,5 +1,4 @@
 import React from 'react';
-import * as BooksAPI from './BooksAPI'
 import './App.css';
 import BooksPage from './BooksPage';
 import SearchPage from './SearchPage';
@@ -87,17 +86,25 @@ class BooksApp extends React.Component {
   /*Change the state of a book after been switched on the select tag of a book */
   onChangeStatus = (event, id) => {
     let newStatus = event.target.value;
+    if (newStatus !== 'NONE') {
 
-    this.setState(prevState => ({
-      books: [
-        ...prevState.books.map(book => book.id === id ?
-          {
-            ...book,
-            status: newStatus
-          } : book
-        )
-      ]
-    }));
+      this.setState(prevState => ({
+        books: [
+          ...prevState.books.map(book => book.id === id ?
+            {
+              ...book,
+              status: newStatus
+            } : book
+          )
+        ]
+      }));
+    } else {
+      this.setState(prevState => ({
+        books: [
+          ...prevState.books.filter(book => book.id !== id)
+        ]
+      }));
+    }
   }
 
   /*Add a new book to the user library, the book enters with the status of want to read*/
