@@ -55,14 +55,17 @@ class BooksApp extends React.Component {
   }
 
   /*Add a new book to the user library, the book enters with the status of want to read*/
-  onAddBook = (obj) => {
-    obj.shelf = 'wantToRead'
-    this.setState(prevState => ({
-      books: [
-        ...prevState.books,
-        obj
-      ]
-    }))
+  onAddBook = (book, newShelf) => {
+
+    console.log("add book", book);
+
+    BookAPI
+      .update(book, newShelf)
+      .then(
+        this.setState(prevState => ({
+          ...prevState.books.concat(book)
+        }))
+      );
   }
 
   render() {
@@ -76,7 +79,12 @@ class BooksApp extends React.Component {
             read={this.getReadBooks}
           />
         )} />
-        <Route exact path="/search" component={SearchPage} />
+        <Route exact path="/search" render={() => (
+          <SearchPage
+            onChange={this.onAddBook}
+            myBooks={this.state.books}
+          />
+        )} />
       </div>
     )
   }

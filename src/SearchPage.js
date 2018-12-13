@@ -7,6 +7,7 @@ class SearchPage extends React.Component {
   state = {
     books: []
   }
+
   onChange = (e) => {
     let str = e.target.value;
 
@@ -15,7 +16,7 @@ class SearchPage extends React.Component {
         .then(books => {
 
           if (!books.error) {
-            this.setState({ books })
+            this.setState({ books: [...books, ...this.props.myBooks] })
           } else {
             this.setState({ books: [] });
           }
@@ -24,6 +25,7 @@ class SearchPage extends React.Component {
       this.setState({ books: [] });
     }
   }
+
   render() {
     console.log(this.state.books);
     return (
@@ -48,11 +50,9 @@ class SearchPage extends React.Component {
           {this.state.books &&
             <BookShelf
               onChange={(e, id) => {
-                console.log("shelf",e.target.value, id)
-                
+                let newShelf = e.target.value;
                 let book = this.state.books.find(book => book.id === id);
-                console.log("book",book);
-
+                this.props.onChange(book, newShelf);
               }}
               title={""}
               books={this.state.books}
