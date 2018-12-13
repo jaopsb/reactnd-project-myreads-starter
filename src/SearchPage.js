@@ -47,7 +47,13 @@ class SearchPage extends React.Component {
           <ol className="books-grid"></ol>
           {this.state.books &&
             <BookShelf
-              onChangeStatus={(e, id) => console.log("status changed")}
+              onChange={(e, id) => {
+                console.log("shelf",e.target.value, id)
+                
+                let book = this.state.books.find(book => book.id === id);
+                console.log("book",book);
+
+              }}
               title={""}
               books={this.state.books}
             />}
