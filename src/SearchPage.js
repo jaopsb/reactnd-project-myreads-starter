@@ -8,6 +8,19 @@ class SearchPage extends React.Component {
     books: []
   }
 
+  filterBooks = (a1, a2) => {
+
+    for (let i = 0; i < a1.length; i++) {
+      for (let j = 0; j < a2.length; j++) {
+        if (a1[i] === a2[j]) {
+          a1.splice(i, 1, a2[j]);
+          break;
+        }
+      }
+    }
+    return a1;
+  }
+
   onChange = (e) => {
     let str = e.target.value;
 
@@ -16,7 +29,7 @@ class SearchPage extends React.Component {
         .then(books => {
 
           if (!books.error) {
-            this.setState({ books: [...books, ...this.props.myBooks] })
+            this.setState({ books: [...this.filterBooks(books, this.props.myBooks)] })
           } else {
             this.setState({ books: [] });
           }
@@ -27,7 +40,6 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.books);
     return (
       <div className="search-books">
         <div className="search-books-bar">

@@ -12,11 +12,11 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount = () => {
+    console.log("Component did mount")
     BookAPI
       .getAll()
       .then(data => {
         this.setState({ books: data })
-        console.log(data);
       })
       .catch(err => console.log("ERROR", err));
   }
@@ -56,9 +56,6 @@ class BooksApp extends React.Component {
 
   /*Add a new book to the user library, the book enters with the status of want to read*/
   onAddBook = (book, newShelf) => {
-
-    console.log("add book", book);
-
     BookAPI
       .update(book, newShelf)
       .then(
