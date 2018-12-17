@@ -12,7 +12,7 @@ class SearchPage extends React.Component {
 
     for (let i = 0; i < a1.length; i++) {
       for (let j = 0; j < a2.length; j++) {
-        if (a1[i] === a2[j]) {
+        if (a1[i].id === a2[j].id) {
           a1.splice(i, 1, a2[j]);
           break;
         }

@@ -6,7 +6,6 @@ import * as BookAPI from './BooksAPI';
 import { Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
-  /* Initial state with the books of the static site */
   state = {
     books: []
   }
@@ -56,13 +55,38 @@ class BooksApp extends React.Component {
 
   /*Add a new book to the user library, the book enters with the status of want to read*/
   onAddBook = (book, newShelf) => {
-    BookAPI
-      .update(book, newShelf)
-      .then(
-        this.setState(prevState => ({
-          ...prevState.books.concat(book)
-        }))
-      );
+
+    let bookToFind = this.state.books.find(b => b.id === book.id);
+
+    if (bookToFind) {
+
+      bookToFind.shelf = newShelf;
+
+      BookAPI
+        .update(bookToFind, newShelf)
+        .then(
+          this.setState(prevState => ({
+            books: [
+              ...prevState.books,
+              bookToFind
+            ]
+          }))
+        );
+    } else {
+      BookAPI
+        .update(book, newShelf)
+        .then(
+          this.setState(prevState => ({
+            books: [
+              ...prevState.books,
+              {
+                ...book,
+                shelf: newShelf
+              }
+            ]
+          }))
+        );
+    }
   }
 
   render() {

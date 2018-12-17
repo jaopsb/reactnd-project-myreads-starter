@@ -2,7 +2,7 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 
 const Book = (props) => {
-  const { id, title, author, imageLinks, shelf, onChange } = props;
+  const { id, title, authors, imageLinks, shelf, onChange } = props;
   let thumbnail = " ";
 
   if (imageLinks) {
@@ -15,7 +15,7 @@ const Book = (props) => {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: thumbnail !== " " ? `url(${thumbnail})` : "none" }}></div>
           <div className="book-shelf-changer">
-            <select value={shelf} onChange={(e) => {
+            <select value={shelf ? shelf : "NONE"} onChange={(e) => {
               onChange(e, id);
             }}>
               <option value="move" disabled>Move to...</option>
@@ -27,7 +27,7 @@ const Book = (props) => {
           </div>
         </div>
         <div className="book-title">{title}</div>
-        <div className="book-authors">{author}</div>
+        <div className="book-authors">{authors ? authors.join(',') : "No Author Found"}</div>
       </div>
     </li >
   );
