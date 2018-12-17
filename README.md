@@ -37,20 +37,24 @@ To get started developing right away:
 ```
 
 ## The Front End
-This project consists in a app that manage Books for a user that wants to get his/hers reading up to date.To make this works, there was projected 3 shelfs for the user sort the books hi(er)s is currently reading,wanto to read and already read, and a page for the user can search for new books to add to his/hers library. The magic of React comes in light when we face the challenge of creating such app that we can evolve without much rework. Thinking about the shelf, only 3 was proposed, so even if was to create only one html file, 3 static components wouldn't be so long to write and maintain, but it would still be static, and the rework to always rewrite a html file to add new books is insane. With React we divide the Components that make the app in small components,
-that is for this app:
+This project consists in a app that manage Books for a user that wants to get his/hers reading up to date.To make this works, there were projected 3 shelves for the user sort the books he(she) is currently reading,want to read or already read, and a page for the user to search for new books and add to his/hers library. The magic of React comes in light when we face the challenge of creating such app that we can evolve without much rework. Thinking about the shelf, only 3 was proposed, so even if was to create only one Html file, 3 static components wouldn't be so long to write and maintain, but it would still be static, and the rework to always rewrite a html file to add new books is a little bit insane. With React we divide the Components that makes the app in small components,to scale the project, so if now we want 4 shelves, just add a new <BookShelf> into the App.js.
+That is for this app:
 
-  * ├── App.js - This is the root of the app.It calls and uses the other components
-    the App only calls the React Router to route the components BookPage
-  * ├── BookShelf.js -Component that discribes the shelfs that will be used in the App.
-  * ├── Book.js -Component of a single book, which is used in the BookShelf component.
-  * ├── BookPage.js -The page that list the shelves of the user, with its respective books.
-  * ├── SearchPage.js -Component of the search page that communicates with the BooksAPI to receive new books.
-  * ├── BooksAPI.js -A JavaScript API for the provided Udacity backend. Instructions for the methods   are below.
+  * App.js - This is the root of the app.It calls and uses the other components and
+    the App calls the React Router to route the components BookPage and SearchPage.
+  * BookShelf.js -Component that discribes the shelfs that will be used in the App.
+  * Book.js -Component of a single book, which is used in the BookShelf component.
+  * BookPage.js -The page that list the shelves of the user, with its respective books.
+  * SearchPage.js -Component of the search page that communicates with the BooksAPI to receive new books.
+  * BooksAPI.js -A JavaScript API for the provided Udacity backend. Instructions for the methods   are below.
 
 ## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+
+## Running the program
+
+To run the program, clone the git repository to your local machine and use 'npm install' and then 'npm start' and voila! The app is running!
 
 ## Contributing
 
