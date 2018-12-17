@@ -7,17 +7,17 @@ import { Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    msg: ""
   }
 
   componentDidMount = () => {
-    console.log("Component did mount")
     BookAPI
       .getAll()
       .then(data => {
-        this.setState({ books: data })
+        this.setState({ books: data, msg: "" })
       })
-      .catch(err => console.log("ERROR", err));
+      .catch(err => this.setState({ msg: err }));
   }
 
   /*Function to filter the state array and return only the books that the user is currently reading*/
@@ -92,6 +92,8 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        {this.state.msg &&
+          <p className="p-error">{this.state.msg}</p>}
         <Route exact path="/" render={() => (
           <BooksPage
             onChangeStatus={this.onChangeStatus}
@@ -100,6 +102,7 @@ class BooksApp extends React.Component {
             read={this.getReadBooks}
           />
         )} />
+
         <Route exact path="/search" render={() => (
           <SearchPage
             onChange={this.onAddBook}
