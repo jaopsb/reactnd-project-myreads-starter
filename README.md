@@ -40,13 +40,13 @@ To get started developing right away:
 This project consists in a app that manage Books for a user that wants to get his/hers reading up to date.To make this works, there was projected 3 shelfs for the user sort the books hi(er)s is currently reading,wanto to read and already read, and a page for the user can search for new books to add to his/hers library. The magic of React comes in light when we face the challenge of creating such app that we can evolve without much rework. Thinking about the shelf, only 3 was proposed, so even if was to create only one html file, 3 static components wouldn't be so long to write and maintain, but it would still be static, and the rework to always rewrite a html file to add new books is insane. With React we divide the Components that make the app in small components,
 that is for this app:
 
-  ├── App.js - This is the root of the app.It calls and uses the other components
+  * ├── App.js - This is the root of the app.It calls and uses the other components
     the App only calls the React Router to route the components BookPage
-  ├── BookShelf.js -Component that discribes the shelfs that will be used in the App.
-  ├── Book.js -Component of a single book, which is used in the BookShelf component.
-  ├── BookPage.js -The page that list the shelves of the user, with its respective books.
-  ├── SearchPage.js -Component of the search page that communicates with the BooksAPI to receive new books.
-  ├── BooksAPI.js -A JavaScript API for the provided Udacity backend. Instructions for the methods   are below.
+  * ├── BookShelf.js -Component that discribes the shelfs that will be used in the App.
+  * ├── Book.js -Component of a single book, which is used in the BookShelf component.
+  * ├── BookPage.js -The page that list the shelves of the user, with its respective books.
+  * ├── SearchPage.js -Component of the search page that communicates with the BooksAPI to receive new books.
+  * ├── BooksAPI.js -A JavaScript API for the provided Udacity backend. Instructions for the methods   are below.
 
 ## Create React App
 
